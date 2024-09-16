@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listeners</title>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <h1>Counter</h1>
+
+    <div id="content"></div>
+    <button>+1</button>
+
+    <div id="test">
+      <p style="display: none">Paragraphe</p>
+      Texte brut
+    </div>
+
+    <script>
+      const testDiv = document.querySelector("#test");
+
+      console.log(testDiv.innerText);
+      console.log(testDiv.textContent);
+    </script>
+  </body>
+</html>
