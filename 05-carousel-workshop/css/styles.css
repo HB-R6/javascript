@@ -1,0 +1,47 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+/* --- SLIDER --- */
+.slider {
+  max-width: 640px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.items {
+  display: flex;
+}
+
+/* --- NAVIGATION --- */
+.slider .navigation .btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slider .navigation .btn button {
+  cursor: pointer;
+  border-radius: 50%;
+  border: 0;
+  background-color: #fff;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.18s ease-in-out;
+}
+
+.slider .navigation .btn button:hover {
+  transform: scale(1.25);
+}
+
+.slider .navigation .btn.prev {
+  left: 3%;
+}
+
+.slider .navigation .btn.next {
+  right: 3%;
+}
