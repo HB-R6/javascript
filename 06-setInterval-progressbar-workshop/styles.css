@@ -1,0 +1,133 @@
+html {
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+
+#wrapper {
+  text-align: center;
+  max-width: 860px;
+  margin: auto;
+}
+
+h1 {
+  margin: 1rem;
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+button {
+  font-size: larger;
+  padding: 1rem 1.8rem;
+  border: 0;
+  background-color: rgb(58, 159, 58);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: rgb(41, 116, 41);
+}
+
+button:disabled {
+  background-color: gray;
+  cursor: initial;
+}
+
+#progressbarContainer {
+  margin-top: 3rem;
+}
+
+.progressBar {
+  border: 1px solid rgb(32, 114, 202);
+}
+
+.progressBar .inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0%;
+  background-color: rgb(32, 114, 202);
+  color: #fff;
+  transition: width 0.5s ease-in-out;
+  height: 50px;
+}
+
+/* --- SVG ANIMATION --- */
+#confirm {
+  margin-top: 3rem;
+  display: none;
+}
+
+#check-group {
+  animation: 0.32s ease-in-out 1.03s check-group;
+  transform-origin: center;
+}
+
+#check-group #check {
+  animation: 0.34s cubic-bezier(0.65, 0, 1, 1) 0.8s forwards check;
+  stroke-dasharray: 0, 75px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#check-group #outline {
+  animation: 0.38s ease-in outline;
+  transform: rotate(0deg);
+  transform-origin: center;
+}
+
+#check-group #white-circle {
+  animation: 0.35s ease-in 0.35s forwards circle;
+  transform: none;
+  transform-origin: center;
+}
+
+@keyframes outline {
+  from {
+    stroke-dasharray: 0, 345.576px;
+  }
+  to {
+    stroke-dasharray: 345.576px, 345.576px;
+  }
+}
+@keyframes circle {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+@keyframes check {
+  from {
+    stroke-dasharray: 0, 75px;
+  }
+  to {
+    stroke-dasharray: 75px, 75px;
+  }
+}
+@keyframes check-group {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.09);
+  }
+  to {
+    transform: scale(1);
+  }
+}
