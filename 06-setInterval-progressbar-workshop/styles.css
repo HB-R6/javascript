@@ -62,7 +62,7 @@ button:disabled {
   width: 0%;
   background-color: rgb(32, 114, 202);
   color: #fff;
-  transition: width 0.5s ease-in-out;
+  transition: width 0.3s ease-in-out;
   height: 50px;
 }
 
