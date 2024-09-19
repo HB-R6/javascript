@@ -23,5 +23,6 @@ loginForm.addEventListener("submit", (event) => {
     body: JSON.stringify({ username, password }),
   })
     .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((data) => console.log(data))
+    .catch((err) => console.error("Une erreur est survenue : ", err));
 });
