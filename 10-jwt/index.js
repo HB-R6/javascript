@@ -16,9 +16,23 @@ const articlesContainer = document.querySelector("#articles-container");
   });
   const data = await res.json();
 
+  // Charger un template
+  const htmlTemplateRes = await fetch("article_item.html");
+  // Au format texte
+  const articleTemplate = await htmlTemplateRes.text();
+
   data["hydra:member"].map((article) => {
-    const li = document.createElement("li");
-    li.innerText = article.title;
-    articlesContainer.appendChild(li);
+    let articleOutput = articleTemplate.replace("{{ title }}", article.title);
+    articleOutput = articleOutput.replace(
+      "{{ category.name }}",
+      article.category.name
+    );
+    articleOutput = articleOutput.replace("{{ createdAt }}", article.createdAt);
+    articlesContainer.insertAdjacentHTML("beforeend", articleOutput);
   });
 })(); // IIFE
+
+const logout = () => {
+  localStorage.removeItem(tokenName);
+  window.location.href = "login.html";
+};
