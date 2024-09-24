@@ -9,11 +9,14 @@ if (jwt === null) {
 const articlesContainer = document.querySelector("#articles-container");
 
 (async () => {
-  const res = await fetch("http://localhost:8000/api/articles", {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-    },
-  });
+  const res = await fetch(
+    "http://localhost:8000/api/articles?pagination=false",
+    {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    }
+  );
   const data = await res.json();
 
   // Charger un template
