@@ -1,4 +1,13 @@
 const loginForm = document.querySelector("#login-form");
+const errorDiv = document.querySelector("#error");
+const spinner = document.querySelector("#loading-spinner");
+const signInButton = loginForm.querySelector('button[type="submit"]');
+
+const pause = (milliseconds) => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(1), milliseconds);
+  });
+};
 
 // Quand on écoute un événement,
 // alors on installe un écouteur (une fonction)
@@ -6,6 +15,9 @@ const loginForm = document.querySelector("#login-form");
 // Ainsi, lorsque l'écouteur est déclenché, il reçoit en paramètre l'événement en question
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+  errorDiv.classList.add("hidden");
+  spinner.classList.remove("hidden");
+  signInButton.disabled = true;
 
   // Je construis un objet FormData à partir du formulaire existant
   const formData = new FormData(loginForm);
@@ -14,6 +26,7 @@ loginForm.addEventListener("submit", async (event) => {
   const password = formData.get("password");
 
   try {
+    await pause(3000);
     const res = await fetch("http://localhost:8000/api/login_check", {
       method: "POST",
       headers: {
@@ -25,7 +38,11 @@ loginForm.addEventListener("submit", async (event) => {
     });
 
     if (!res.ok) {
-      console.error("Erreur survenue lors de l'authentification");
+      errorDiv.innerText = "Erreur survenue lors de l'authentification";
+      errorDiv.classList.remove("hidden");
+      spinner.classList.add("hidden");
+      signInButton.disabled = false;
+      console.error("Erreur survenue lors de l'authentification", res.status);
       return;
     }
 
